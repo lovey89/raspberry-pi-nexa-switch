@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
     if (strcmp(argv[1], "group") == 0) // Send command to whole group
     {
-      Nexa__sendCode(GROUP_CODE, true, activate, 0b0000);
+      Nexa__sendCode(GROUP_CODE, true, activate, 0b0000, 50);
     }
     //else if (strcmp(argv[1], "dev") == 0) //Alternera bitarna vid testning i audacity
     //{
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
       const long i = strtol(argv[1], &end, 10);
 
       if (*end == '\0' && i >= 1 && i <= 16) {
-        Nexa__sendCode(GROUP_CODE, false, activate, i - 1);
+        Nexa__sendCode(GROUP_CODE, false, activate, i - 1, 10);
       }
       else
       {

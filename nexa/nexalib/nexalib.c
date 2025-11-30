@@ -48,15 +48,15 @@ void Nexa__setup()
 }
 
 void Nexa__sendCode(
-  int32_t groupCode, bool groupCommand, bool activate, char deviceCode)
+  int32_t groupCode, bool groupCommand, bool activate, char deviceCode, char sendTimes)
 {
   int32_t nexaCodeOrig =
     createNexaCode(groupCode, groupCommand, activate, deviceCode);
 
   int32_t mask = 0x80000000;
 
-  // Resend the code 10 times
-  for (int i = 0 ; i < 10 ; i++)
+  // Resend the code 'sendTimes' times
+  for (int i = 0 ; i < sendTimes ; i++)
   {
     int32_t nexaCode = nexaCodeOrig;
     sendStartBits();
