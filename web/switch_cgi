@@ -13,10 +13,16 @@ PARAMS=`echo $QUERY_STRING | cut -d\? -f 2`
 
 CHAN=`echo $PARAMS | cut -d\& -f 1`
 ACT=`echo $PARAMS | cut -d\& -f 2`
+GROUP=`echo $PARAMS | cut -d\& -f 3`
 
 echo $QUERY_STRING
 echo $PARAMS
 echo $CHAN
 echo $ACT
+echo $GROUP
 
-./nexa $CHAN $ACT
+if [ -n "$GROUP" ]; then
+  ./nexa "$CHAN" "$ACT" "$GROUP"
+else
+  ./nexa "$CHAN" "$ACT"
+fi
