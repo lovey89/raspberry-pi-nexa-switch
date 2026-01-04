@@ -39,8 +39,16 @@ int main(int argc, char **argv)
     char* end;
     const long i = strtol(argv[3], &end, 10);
 
-    if (*end == '\0' && i >= 0) {
-      groupCode += i;
+    if (*end == '\0' && i >= 0)
+    {
+      if (i < 1000)
+      {
+        groupCode += i;
+      }
+      else
+      {
+        groupCode = i;
+      }
     }
     else
     {
